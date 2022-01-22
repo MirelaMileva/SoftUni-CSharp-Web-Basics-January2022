@@ -18,6 +18,7 @@ namespace BasicHttpServer.Server.HTTP
 
         public bool Contains(string name)
             => this.cookies.ContainsKey(name);
+
         public IEnumerator<Cookie> GetEnumerator()
             => this.cookies.Values.GetEnumerator();
 
