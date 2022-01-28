@@ -154,9 +154,9 @@ namespace BasicHttpServer.Server.HTTP
                 }
 
                 var headerName = headerParts[0];
-                var headerValue = headerParts[1].Trim();
+                var headerValue = headerParts[1];
 
-                headerCollection.Add(headerName, headerValue);
+                headerCollection.Add(headerName, headerValue.Trim());
             }
 
             return headerCollection;
