@@ -1,5 +1,6 @@
 ﻿using BasicHttpServer.Server.HTTP;
 using BasicHttpServer.Server.Responses;
+using System.Runtime.CompilerServices;
 
 namespace BasicHttpServer.Server.Controllers
 {
@@ -28,6 +29,16 @@ namespace BasicHttpServer.Server.Controllers
 
             return response;
         }
+
+        protected Response View([CallerMemberName] string viewName = "")
+            => new ViewResponse(viewName, this.GetControllerName());
+
+        protected Response View(object model, [CallerMemberName] string viewName = "")
+            => new ViewResponse(viewName, this.GetControllerName(), model);
+
+        private string GetControllerName()
+            => this.GetType().Name
+            .Replace(nameof(Controller), string.Empty);
 
         protected Response BadRequest() => new BadRequestResponse();
 
